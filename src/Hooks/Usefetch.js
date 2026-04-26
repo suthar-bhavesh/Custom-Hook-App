@@ -8,12 +8,14 @@ const useFetch = (url) => {
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
+
       const res = await fetch(url);
       if (!res.ok) {
         throw new Error("Network error");
       }
 
       const result = await res.json();
+
       setData(result);
     } catch (err) {
       setError(err.message);
